@@ -6,11 +6,11 @@ With millions affected by Parkinson's each year, affordable and accessible treat
 
 ![login.png](docs/images/login.png)   
 
-![home page.png](docs/images/home page.png)  
+![home_page.png](docs/images/home_page.png)  
 
 ![voice.png](docs/images/voice.png)  
 
-![pose estimation.png](docs/images/pose estimation.png)  
+![pose_estimation.png](docs/images/pose_estimation.png)  
 
 ![drawing.png](docs/images/drawing.png)  
 
