@@ -7,7 +7,6 @@ from app import app, APP_ROOT
 import os
 import json
 import requests
-from app.predictEEG import eeg_prediction
 from datetime import datetime
 import cv2
 from threading import Thread
