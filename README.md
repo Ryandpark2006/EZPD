@@ -9,16 +9,9 @@
 <p align = "center"><a href="https://www.buymeacoffee.com/rahulmahesh62"> <img align="center" src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="45" width="170" alt="rahulmahesh62" /></a></p><br><br>
 
 <summary><h2><img src="https://emojis.slackmojis.com/emojis/images/1453406830/264/success-kid.png?1453406830" align="center"
-                width="28" /> What I currently do</h2></summary>
+                width="28" /> Parkinson's Disease</h2></summary>
 
-- 🔭 I'm working on some secret stuff.
-- 🌱 I’m currently learning React and Flutter.
-- 👯 I’m looking to collaborate on Frontend-Web and Flutter projects.
-- 🤔 I’m looking for help with React.
-- 💬 Ask me about Flutter, Front-end Web Development, Any tech-related stuff.
-
-<summary><h2><img src="https://emojis.slackmojis.com/emojis/images/1579216111/7550/pikachu_wave.gif?1579216111" align="center"
-                width="28" /> To connect with me</h2></summary>
+With millions affected by Parkinson's each year, affordable and accessible treatment is a necessity. Currently, diagnosis of PD is often late and inaccurate, as doctors must carefully weigh symptoms, family history, and other factors to come to a conclusion, which leads to reduced treatment options, high morbidity rates, and a lower quality of life. As a result, there are no tests that can give a conclusive result. Therefore, we created EZPD, an accessible and easy-to-use integrated platform using machine learning and computer vision that allows for free early diagnosis of Parkinson’s through a multi-step test: handwriting analysis, which analyzes a spiral drawing, speech recognition, and human gait analysis. 
 
 <p align = "center">
  
