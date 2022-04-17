@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+{% block ourpage %}
+    <div class="max-w-screen-lg mx-auto pt-6">
+        <div class="flex items-center align-middle justify-between">
+            <h1 class="text-4xl font-extrabold mt-12 mb-12">Welcome, <span class="text-blue-700">{{ name }}</span>.</h1>
+            <p class="text-center"><a href="{{ url_for('record') }}" class="mx-auto px-6 py-4 rounded-md flex bg-blue-600 font-bold shadow-md text-gray-100 hover:opacity-90 opacity-100">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                </svg>
+                Add Recording</a></p>
+        </div>
+    </div>
+    <div class="max-w-screen-lg mx-auto pt-12 grid grid-cols-4 gap-6">
+        <div>
+            <p class="text-gray-500 italic text-center">{{ message }}</p>
+            {% for dict_item in options %}
+                <h1 class="mb-8"><a class="text-md font-bold px-4 py-3 bg-gray-100 hover:bg-gray-200 shadow rounded-md" href="{{ dict_item.url }}">{{ dict_item.date }}</a></h1>
+            {% endfor %}
+        </div>
+        {% if options %}
+        <div class="col-span-3 pb-8">
+            <div class="grid grid-cols-3 gap-6 mb-8">
+                <div class="rounded-md shadow p-4 border-2 border-gray-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                      </svg>
+                    <p class="text-gray-500 font-bold text-sm mt-4 mb-1">Spiral Analysis</p>
+                    <h3 class="text-2xl font-extrabold">{{ spiral_diag }}</h3>
+                </div>
+                <div class="rounded-md shadow p-4 border-2 border-gray-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 320 512"><path d="M256 48C256 74.51 234.5 96 208 96C181.5 96 160 74.51 160 48C160 21.49 181.5 0 208 0C234.5 0 256 21.49 256 48zM126.5 199.3C125.6 199.7 124.6 200.1 123.7 200.5L112.7 205.4C97.41 212.2 85.42 224.6 79.22 240.1L77.71 243.9C71.15 260.3 52.53 268.3 36.12 261.7C19.71 255.1 11.73 236.5 18.29 220.1L19.8 216.3C32.19 185.4 56.18 160.5 86.66 146.9L97.66 142C118.5 132.8 140.1 128 163.7 128C208.3 128 248.5 154.8 265.6 195.9L280.1 232.7L302.3 243.4C318.1 251.3 324.5 270.5 316.6 286.3C308.7 302.1 289.5 308.5 273.7 300.6L247 287.3C236.7 282.1 228.6 273.4 224.2 262.8L214.6 239.8L195.3 305.3L244.8 359.4C250.2 365.3 254.1 372.4 256 380.2L279 472.2C283.3 489.4 272.9 506.8 255.8 511C238.6 515.3 221.2 504.9 216.1 487.8L194.9 399.6L124.3 322.5C109.5 306.4 103.1 283.9 109.6 262.8L126.5 199.3zM68.73 398L93.69 335.6C95.84 338.6 98.16 341.4 100.7 344.2L141.4 388.6L126.9 424.8C124.5 430.9 120.9 436.4 116.3 440.9L54.63 502.6C42.13 515.1 21.87 515.1 9.372 502.6C-3.124 490.1-3.124 469.9 9.372 457.4L68.73 398z"/></svg>
+                    <p class="text-gray-500 font-bold text-sm mt-4 mb-1">Gait Analysis</p>
+                    <h3 class="text-2xl font-extrabold">{{ gait_diag }}</h3>
+                </div>
+                <div class="rounded-md shadow p-4 border-2 border-gray-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 384 512"><path d="M192 352c53.03 0 96-42.97 96-96v-160c0-53.03-42.97-96-96-96s-96 42.97-96 96v160C96 309 138.1 352 192 352zM344 192C330.7 192 320 202.7 320 215.1V256c0 73.33-61.97 132.4-136.3 127.7c-66.08-4.169-119.7-66.59-119.7-132.8L64 215.1C64 202.7 53.25 192 40 192S16 202.7 16 215.1v32.15c0 89.66 63.97 169.6 152 181.7V464H128c-18.19 0-32.84 15.18-31.96 33.57C96.43 505.8 103.8 512 112 512h160c8.222 0 15.57-6.216 15.96-14.43C288.8 479.2 274.2 464 256 464h-40v-33.77C301.7 418.5 368 344.9 368 256V215.1C368 202.7 357.3 192 344 192z"/></svg>
+                    <p class="text-gray-500 font-bold text-sm mt-4 mb-1">Speech Analysis</p>
+                    <h3 class="text-2xl font-extrabold">{{ speech_diag }}</h3>
+                </div>
+            </div>
+            <p class="font-bold text-lg">Wave chart of audio</p>
+            <img src="{{ wave }}" alt="Wave">
+            <p class="font-bold text-lg mt-8">Amplitude spectrogram of audio</p>
+            <img src="{{ amp }}" alt="Amplitude spectrogram">
+            <p class="font-bold text-lg mt-8">Frequency spectrogram of audio</p>
+            <img src="{{ freq }}" alt="Frequency spectrogram">
+            <p class="font-bold text-lg mt-8 mb-6">Patient spiral drawing + comparison to PD spiral drawing (on the right)</p>
+            <div class="grid grid-cols-2">
+                <img src="{{ spiral }}" class="h h-48 mx-auto" alt="Patient spiral">
+                <img src="{{ url_for('static', filename='img/pd_spiral.png') }}"  class="h-48 mx-auto" alt="PD spiral">
+            </div>
+            <p class="font-bold text-lg mt-8 mb-6">Pose tracking of patient for gait analysis.</p>
+            <video controls>
+                <source src="{{ url_for('static', filename='img/gait.mp4') }}" type="video/mp4">
+            </video> 
+        </div>
+        {% endif %}
+    </div>
+  <!-- <p class="text-lg text-gray-500 max-w-screen-lg text-center mx-auto mt-4 mb-12">Upload an EEG file to our application and we will use novel deep learning algorithms to diagnose stroke. If it detects a stroke, our algorithms will also report the specific type of stroke, the hemisphere of the brain in which the stroke is occurring, and the severity of the stroke.</p> -->
+  
+	<!-- <script>
+		let btn = document.querySelector("#sub");
+		btn.addEventListener("click", handle)
+		function handle() {
+			// document.getElementById("sub").disabled = true;
+			document.getElementById("loading").style.display = "block";
+			document.getElementById("eegform").style.display = "none";
+		}
+	</script> -->
+{% endblock %}

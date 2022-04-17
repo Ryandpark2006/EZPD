@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+{% block ourpage %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <h1 class="text-3xl text-center font-bold mt-12">Record Data</h1>
+  <p class="text-lg text-gray-500 max-w-screen-lg text-center mx-auto mt-4 mb-12">
+    Record audio for the following (use an interviewer for the patient): Ask the participant to relax a bit and then to make a phone call to the test executor (off-hook signal triggered).
+    Ask the participant to read out “The North Wind and the Sun”.
+    Depending on the constitution of the participant either ask to read out “Tech. Engin. Computer applications in geography snippet”.
+    Start a spontaneous dialog with the participant, the test executor starts asking random questions about places of interest, local traffic, or personal interests if acceptable.
+    Test executor ends call by farewell (on-hook signal triggered).
+  </p>
+		<div class="max-w-screen-md mx-auto">
+            <form method="post" action="/uploadspeech" enctype="multipart/form-data">
+                <p class="text-center mb-8">
+                    <button class="mx-auto px-8 py-4 rounded-md bg-red-500 font-bold shadow-md text-black disabled:opacity-60 opacity-100 mr-12" id="startRecording">Start recording</button>
+                    <button class="mx-auto px-8 py-4 rounded-md bg-red-500 font-bold shadow-md text-black disabled:opacity-60 opacity-100" id="stopRecording" disabled>Stop recording</button>
+                </p>
+                <div id="speechform">
+                    <label class="block mb-2 text-sm font-medium text-gray-900" for="user_avatar">Or upload an audio file</label>
+                    <input accept="audio/*" class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer focus:outline-none focus:border-transparent" aria-describedby="user_avatar_help" name="file" type="file">
+                </div>
+                <input type="submit" value="Upload" id='sub' class="font-bold shadow-md mb-6 w-full cursor-pointer mt-6 px-8 py-4 rounded-md bg-blue-500 text-white hover:bg-blue-700">
+			</form>
+                <!-- <input type="submit" value="Capture" id='sub' class="font-bold shadow-md mb-6 w-full cursor-pointer mt-6 px-8 py-4 rounded-md bg-blue-500 text-white hover:bg-blue-700"> -->
+        </div>
+	<script>
+        navigator
+            .mediaDevices
+            .getUserMedia({audio: true})
+            .then(stream => { handlerFunction(stream) });
+    
+        function handlerFunction(stream) {
+            rec = new MediaRecorder(stream);
+            rec.ondataavailable = e => {
+                audioChunks.push(e.data);
+                if (rec.state == "inactive") {
+                    let blob = new Blob(audioChunks, {type: 'audio/mpeg-3'});
+                    sendData(blob);
+                }
+            }
+        }
+    
+        function sendData(data) {
+            var form = new FormData();
+            form.append('file', data, 'data.mp3');
+            form.append('title', 'data.mp3');
+            //Chrome inspector shows that the post data includes a file and a title.
+        }
+    
+        startRecording.onclick = e => {
+            console.log('Recording are started..');
+            startRecording.disabled = true;
+            stopRecording.disabled = false;
+            audioChunks = [];
+            rec.start();
+        };
+    
+        stopRecording.onclick = e => {
+            console.log("Recording are stopped.");
+            startRecording.disabled = false;
+            stopRecording.disabled = true;
+            rec.stop();
+        };
+    </script>
+{% endblock %}
