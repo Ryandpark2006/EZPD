@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+{% block ourpage %}
+  <h1 class="text-3xl text-center font-bold mt-12 mb-8">Log In</h1>
+  <!-- <p class="text-lg text-gray-500 max-w-screen-lg text-center mx-auto mt-4 mb-12">Upload an EEG file to our application and we will use novel deep learning algorithms to diagnose stroke. If it detects a stroke, our algorithms will also report the specific type of stroke, the hemisphere of the brain in which the stroke is occurring, and the severity of the stroke.</p> -->
+  <form method="post" action="/signin" enctype="multipart/form-data">
+		<div class="max-w-screen-md mx-auto">
+            <div id="loginform">
+                <div class="mb-6">
+                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
+                    <input type="email" id="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="name@ezpd.tech" required>
+                  </div>
+                  <div class="mb-6">
+                    <label for="pass" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
+                    <input type="password" id="pass" name="pass" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                  </div>
+			</div>
+			<!-- <div id="loading" style="display:none;">
+				<p class="font-semibold text-blue-600 text-center text-2xl">Computing...</p>
+				
+			</div> -->
+			<input type="submit" value="Submit" id='sub' class="font-bold shadow-md mb-6 w-full cursor-pointer mt-6 px-8 py-4 rounded-md bg-blue-500 text-white hover:bg-blue-700">
+            <p class="text-center text-gray-500">Don't have an account? <a class="text-blue-500 font-bold" href="{{ url_for('signup') }}"">Create an account.</a></p>
+        </div>
+	</form>
+	<!-- <script>
+		let btn = document.querySelector("#sub");
+		btn.addEventListener("click", handle)
+		function handle() {
+			// document.getElementById("sub").disabled = true;
+			document.getElementById("loading").style.display = "block";
+			document.getElementById("eegform").style.display = "none";
+		}
+	</script> -->
+{% endblock %}

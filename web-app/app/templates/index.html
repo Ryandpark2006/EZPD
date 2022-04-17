@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+{% block ourpage %}
+  <div id="particles-js" style="background: black; position: absolute; width: 100%; height: 100%; margin-top: -3.5rem;">
+    <canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;"></canvas>
+  </div>
+  <div class="content text-white text-center max-w-screen-md mx-auto mt-40" style="position: relative">
+    <h1 style="z-index: 10" class="text-7xl font-bold mb-8"><span class="text-blue-200">EZ</span>PD</h1>
+    <h3 style="z-index: 10" class="text-2xl font-semibold mb-8">A revolutionary platform for easy, fast, and remote diagnosis and monitoring of Parkinson's disease.</h3>
+    <div class="flex font-semibold text-lg space-x-8 justify-center">
+     <a href="/signup" class="px-8 py-4 rounded-md bg-blue-200 text-black hover:opacity-80 opacity-100"><p>Sign Up</p></a>
+      <a href="/login" class="px-8 py-4 rounded-md bg-transparent border-blue-200 border-2 text-blue-200 hover:bg-blue-200 hover:text-black hover:opacity-80"><p>Log In</p></a>
+    </div>
+  </div>
+  <div class="mt-56 max-w-screen-xl mx-auto px-12">
+    <h2 class="text-3xl text-center font-bold">The next revolution in Parkinson's diagnosis and monitoring is <span class="text-blue-600">here</span>.</h2>
+    <p class="text-lg text-gray-500 max-w-screen-lg mx-auto my-8 mb-12">
+      Parkinson's disease is one of the most common neurodegenerative diseases in the WORLD, with millions of people suffering per year. There is no known cure for Parkinson's and very few treatments out there that target the disease's symptoms. Current diagnostic measures consist of ambiguous surveys or are extremely invasive, and incipient diagnosis is not clinically implemented. As a result, 1 in 4 patients is misdiagnosed, which can lead to worsening of the disease. Therefore, we propose EZPD, a noninvasive all-in-one platform that performs an accurate diagnosis for PD based on machine learning analysis of speech, handwriting, and human gait.
+    </p>
+        <style>
+          .colparts {
+            flex: 50%;
+            max-width: 50%;
+            padding: 0 10px;
+          }
+
+          .colparts img {
+            margin-top: 8px;
+            vertical-align: middle;
+            max-width: 100%;
+            height: 10vh;
+          }
+
+          .row {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+          }
+
+        </style>
+          <div class="max-w-screen-md mx-auto grid grid-cols-3 gap-6 mb-8">
+            <div>
+              <img class='w-36 h-36 mx-auto mb-2' src="{{url_for('static', filename='img/wave-chart.gif')}}">
+              <p class="text-gray-500 text-sm">People with Parkinson's have shown to exhibit distictual speech difficulties. Therefore, we use state-of-the-art speech analysis models that extract relevant information/biomarker data from the audio recordings and use this to diagnose Parkinson's disease.</p>
+            </div>
+            <div>
+              <img class='w-36 h-36 mx-auto mb-2' src="{{url_for('static', filename='img/pencil.gif')}}">
+              <p class="text-gray-500 text-sm">Drawing a spiral on a sheet of paper is one of the methods used to diagnose early Parkinson's disease. This is due to the shaking and muscle rigidity seen in many patients. Thus, we use a convolutional neural network to analyze the image of a spiral drawing and determine the likelihood of Parkinson's.</p>
+            </div>
+            <div>
+              <img class='w-36 h-36 mx-auto mb-2' src="{{url_for('static', filename='img/scanning.gif')}}">
+              <p class="text-gray-500 text-sm">Common symptoms of Parkinson's inclde tremor, slowness of movement, stiff muscles, unsteady walk and balance and coordination problems. As a result, we utilize pose estimation and a feature extraction model to actively analyze human gait and compare it with that of Parkinson's.</p>
+            </div>
+          </div>
+          <div class="row">
+              <div class="text-container" style="margin: 0 auto">
+              </div>
+          </div>
+          <br>
+
+    <p class="text-sm text-center text-gray-600 max-w-screen-lg mx-auto mb-16">Created by Sritan Motati, Aryaman Khanna, and Ryan Park.</p>
+  </div>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    var request = new XMLHttpRequest();
+    request.open("GET","static/js/particles.json", false);
+    request.send(null);
+    var jsonData = JSON.parse(request.responseText);
+    particlesJS('particles-js', jsonData, function(){
+        console.log("particles.json loaded...");
+    });
+  </script>
+{% endblock %}

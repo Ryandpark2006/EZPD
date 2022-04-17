@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% block ourpage %}
+  <h1 class="text-3xl text-center font-bold mt-12">Record Data</h1>
+  <p class="text-lg text-gray-500 max-w-screen-lg text-center mx-auto mt-4 mb-12">Capture an image with your on-device camera or upload an image of a spiral drawing made by you. This gives information on motor control and can be used to support a Parkinson's disease diagnosis.</p>
+  <form method="post" action="/uploadspiral" enctype="multipart/form-data">
+		<div class="max-w-screen-md mx-auto">
+            <label for="img" class="hidden">Image</label>
+      		<img id='cam' src="{{ url_for('video_feed') }}" class="shadow-md rounded-md mb-8 mx-auto">
+            <div id="spiralform">
+				<label class="block mb-2 text-sm font-medium text-gray-900" for="user_avatar">Or upload an image</label>
+				<input accept="image/*" class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer focus:outline-none focus:border-transparent" aria-describedby="user_avatar_help" name="img" type="file">
+			</div>
+			<input type="submit" value="Capture" id='sub' class="font-bold shadow-md mb-6 w-full cursor-pointer mt-6 px-8 py-4 rounded-md bg-blue-500 text-white hover:bg-blue-700">
+        </div>
+	</form>
+	<!-- <script>
+		let btn = document.querySelector("#sub");
+		btn.addEventListener("click", handle)
+		function handle() {
+			// document.getElementById("sub").disabled = true;
+			document.getElementById("loading").style.display = "block";
+			document.getElementById("eegform").style.display = "none";
+		}
+	</script> -->
+{% endblock %}
